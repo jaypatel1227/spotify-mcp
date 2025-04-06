@@ -12,10 +12,10 @@ if (!process.env.SPOTIFY_REDIRECT_URI) {
   throw new Error('Missing SPOTIFY_REDIRECT_URI environment variable');
 }
 
-export const spotifyApi = (redirectUri: string) => new SpotifyWebApi({
+export const spotifyApi = new SpotifyWebApi({
   clientId: process.env.SPOTIFY_CLIENT_ID,
   clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
-  redirectUri: redirectUri,
+  redirectUri: process.env.SPOTIFY_REDIRECT_URI,
 });
 
 export const scopes = [
@@ -32,6 +32,6 @@ export const scopes = [
   'playlist-modify-private',
 ];
 
-export const getAuthUrl = (redirectUri: string) => {
-  return spotifyApi(redirectUri).createAuthorizeURL(scopes, 'state');
+export const getAuthUrl = () => {
+  return spotifyApi.createAuthorizeURL(scopes, 'state');
 }; 

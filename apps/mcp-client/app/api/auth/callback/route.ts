@@ -16,7 +16,6 @@ export async function GET(request: NextRequest) {
       return NextResponse.redirect(new URL('/auth/error', request.url));
     }
 
-    const spotifyApi: SpotifyWebApi = spotifyApi("hello");
     // Exchange the code for access and refresh tokens
     const data = await spotifyApi.authorizationCodeGrant(code);
     
