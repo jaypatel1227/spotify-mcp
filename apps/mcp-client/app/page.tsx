@@ -1,6 +1,6 @@
 'use client';
 
-import LoginButton from './components/LoginButton';
+import LoginButton from "@repo/ui/spotify/LoginButton";
 
 export default function Home() {
   return (
